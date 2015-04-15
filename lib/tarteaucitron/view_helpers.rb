@@ -26,6 +26,14 @@ module Tarteaucitron
         if options.has_key?("facebook")
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('facebook');"
         end
+        
+        if options.has_key?("googleplus")
+          script += "(tarteaucitron.job = tarteaucitron.job || []).push('gplus');"
+        end
+        
+        if options.has_key?("twitter")
+          script += "(tarteaucitron.job = tarteaucitron.job || []).push('twitter');"
+        end
 
         result += content_tag("script", script.html_safe)
 
@@ -41,5 +49,30 @@ module Tarteaucitron
       content_tag(:div, '', class: "fb-like", data: options).html_safe
 
     end    
+    
+    def googleplus(options = {})
+    
+      default_options = {size: "small", annotation: "inline", width: "300"}
+      options = default_options.merge(options)
+
+      content_tag(:div, '', class: "g-plusone", data: options).html_safe
+    
+    end
+    
+    def twitter(options = {})
+    
+      result = ""
+    
+      default_options = {via: "twitter_username", count: "vertical", dnt: "true"}
+      options = default_options.merge(options)
+      
+      result += content_tag(:span, '', class: "tacTwitter").html_safe
+      
+      result += content_tag(:a,'', href: "https://twitter.com/share", class: "twitter-share-button", data: options).html_safe
+          
+      result.html_safe 
+          
+    end
+    
   end
 end
