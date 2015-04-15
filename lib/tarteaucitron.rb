@@ -1,5 +1,2 @@
-require "tarteaucitron/version"
-
-module Tarteaucitron
-  # Your code goes here...
-end
+#require "tarteaucitron/version"
+require 'tarteaucitron/railtie' if defined?(Rails)
