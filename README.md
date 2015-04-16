@@ -1,8 +1,6 @@
 # Tarteaucitron
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/tarteaucitron`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+A gem to install tarteaucitron, GeoIP and provide helpers to show social network buttons. 
 
 ## Installation
 
@@ -22,13 +20,83 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Run the generator to import tarteaucitron and geodat in your public directory
 
-## Development
+```ruby
+rails g tarteaucitron
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `bin/console` for an interactive prompt that will allow you to experiment.
+## Helpers
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release` to create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+### Google analytics
+
+Put this in your application layout or elsewhere
+
+```ruby
+<%= tarteaucitron({"google" => "UA-XXXXXX-XX"}) %>
+```
+
+### Google +
+
+Expect an hash of options. Default options are 
+
+```ruby
+<%= {size: "small", annotation: "inline", width: "300"} %>
+```
+
+Example : 
+
+```ruby
+<%= tarteaucitron({"googleplus" => {size: "tall", annotation: "inline", width: "300"}}) %>
+```
+
+Here's its helper
+
+```ruby
+<%= googleplus %>
+```
+
+### Facebook
+
+Expect an hash of options. Default options are 
+
+```ruby
+<%= {layout: "standard", action: "like", share: "true"} %>
+```
+
+Example : 
+
+```ruby
+<%= tarteaucitron({"facebook" => {layout: "box_count", action: "like", share: "true"}}) %>
+```
+
+Here's its helper
+
+```ruby
+<%= facebook %>
+```
+
+### Twitter
+
+Expect an hash of options. Default options are 
+
+```ruby
+<%= {via: "twitter_username", count: "vertical", dnt: "true"} %>
+```
+
+Example : 
+
+```ruby
+<%= tarteaucitron({"facebook" => {via: "twitter_username", count: "horizontal", dnt: "true"}}) %>
+```
+
+Here's its helper
+
+```ruby
+<%= twitter %>
+```
+
+[See all options on tarteaucitron](https://opt-out.ferank.eu/fr/install/)
 
 ## Contributing
 

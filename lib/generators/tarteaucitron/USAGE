@@ -1,8 +1,23 @@
 Description:
-    Explain the generator
+    Download tarteaucitron and geodat.
 
 Example:
-    rails generate tarteaucitron Thing
+    rails generate tarteaucitron
 
-    This will create:
-        what/will/it/create
+    This will create in public/tarteaucitron directory:
+        lang/tarteaucitron.ru.js
+        lang/tarteaucitron.es.js
+        lang/tarteaucitron.pt.js
+        lang/tarteaucitron.pl.js
+        lang/tarteaucitron.de.js
+        lang/tarteaucitron.fr.js
+        lang/tarteaucitron.it.js
+        lang/tarteaucitron.en.js
+        README.md
+        css/tarteaucitron.css
+        tarteaucitron.js
+        tarteaucitron.services.js
+        LICENSE
+        advertising.js
+        
+    It will create GeoIP.dat in db folder
