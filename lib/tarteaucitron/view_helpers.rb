@@ -75,7 +75,7 @@ module Tarteaucitron
 
     def cookie_manager_link(text = "Gestion des cookies")
 
-      content_tag(:a, text, href: "javascript:tarteaucitron.userInterface.openPanel();").html_safe
+      content_tag(:a, h(text), href: "javascript:tarteaucitron.userInterface.openPanel();").html_safe
 
     end
 
