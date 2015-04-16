@@ -18,10 +18,10 @@ module Tarteaucitron
                   }
 
         if options["options"]
-          default = default.merge(options["options"])
+          init_options = default.merge(options["options"])
         end
 
-        script = "tarteaucitron.init(#{default.to_json});"
+        script = "tarteaucitron.init(#{init_options.to_json});"
         if options["google_analytics"]
           script += "tarteaucitron.user.gajsUa = '#{options["google_analytics"]}';"
           script += "tarteaucitron.user.gajsMore = function () {};"
