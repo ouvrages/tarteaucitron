@@ -16,21 +16,21 @@ module Tarteaucitron
                     "removeCredit"=> false,
                   }
         script = "tarteaucitron.init(#{default.to_json});"
-        if options.has_key?("google_analytics")
+        if options["google_analytics"]
           script += "tarteaucitron.user.gajsUa = '#{options["google_analytics"]}';"
           script += "tarteaucitron.user.gajsMore = function () {};"
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('gajs');"
         end
 
-        if options.has_key?("facebook")
+        if options["facebook"]
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('facebook');"
         end
         
-        if options.has_key?("googleplus")
+        if options["googleplus"]
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('gplus');"
         end
         
-        if options.has_key?("twitter")
+        if options["twitter"]
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('twitter');"
         end
 
