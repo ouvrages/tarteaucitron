@@ -1,10 +1,9 @@
 module Tarteaucitron
   module ViewHelpers
     def tarteaucitron(options = {})
+      options = options.with_indifferent_access
       result = ""
       ip = request.remote_ip
-  #   ip = "109.190.53.206"
-  #   ip = "207.97.227.239"
       if ["EU", "--"].include?(GeoIP.new(Rails.root.join('db', 'GeoIP.dat')).country(ip).continent_code)
         result += content_tag("script", '', src: "/tarteaucitron/tarteaucitron.js", type: "text/javascript")
         default = {
@@ -17,8 +16,8 @@ module Tarteaucitron
                     "removeCredit"=> false,
                   }
         script = "tarteaucitron.init(#{default.to_json});"
-        if options.has_key?("google")
-          script += "tarteaucitron.user.gajsUa = '#{options["google"]}';"
+        if options.has_key?("google_analytics")
+          script += "tarteaucitron.user.gajsUa = '#{options["google_analytics"]}';"
           script += "tarteaucitron.user.gajsMore = function () {};"
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('gajs');"
         end

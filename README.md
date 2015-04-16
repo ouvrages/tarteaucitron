@@ -22,7 +22,7 @@ Or install it yourself as:
 
 Run the generator to import tarteaucitron and geodat in your public directory
 
-```ruby
+```shell
 rails g tarteaucitron
 ```
 
@@ -33,21 +33,16 @@ rails g tarteaucitron
 Put this in your application layout or elsewhere
 
 ```ruby
-<%= tarteaucitron({"google" => "UA-XXXXXX-XX"}) %>
+<%= tarteaucitron(:google_analytics => "UA-XXXXXX-XX", :google_plus => true) %>
 ```
 
 ### Google +
 
-Expect an hash of options. Default options are 
-
-```ruby
-<%= {size: "small", annotation: "inline", width: "300"} %>
-```
-
+You have to enable Google + on the main helper.
 Example : 
 
 ```ruby
-<%= tarteaucitron({"googleplus" => {size: "tall", annotation: "inline", width: "300"}}) %>
+<%= tarteaucitron(:googleplus => true) %>
 ```
 
 Here's its helper
@@ -56,18 +51,18 @@ Here's its helper
 <%= googleplus %>
 ```
 
-### Facebook
-
-Expect an hash of options. Default options are 
+You can provide a hash of options. Default options are 
 
 ```ruby
-<%= {layout: "standard", action: "like", share: "true"} %>
+<%= {size: "small", annotation: "inline", width: "300"} %>
 ```
+
+### Facebook
 
 Example : 
 
 ```ruby
-<%= tarteaucitron({"facebook" => {layout: "box_count", action: "like", share: "true"}}) %>
+<%= tarteaucitron(:facebook => true) %>
 ```
 
 Here's its helper
@@ -76,24 +71,30 @@ Here's its helper
 <%= facebook %>
 ```
 
-### Twitter
-
-Expect an hash of options. Default options are 
+You can provide a hash of options. Default options are 
 
 ```ruby
-<%= {via: "twitter_username", count: "vertical", dnt: "true"} %>
+<%= {layout: "standard", action: "like", share: "true"} %>
 ```
+
+### Twitter
 
 Example : 
 
 ```ruby
-<%= tarteaucitron({"facebook" => {via: "twitter_username", count: "horizontal", dnt: "true"}}) %>
+<%= tarteaucitron(:twitter => {via: "twitter_username", count: "horizontal", dnt: "true"}) %>
 ```
 
 Here's its helper
 
 ```ruby
 <%= twitter %>
+```
+
+You can provide a hash of options. Default options are 
+
+```ruby
+<%= {via: "twitter_username", count: "vertical", dnt: "true"} %>
 ```
 
 [See all options on tarteaucitron](https://opt-out.ferank.eu/fr/install/)

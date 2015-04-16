@@ -1,5 +1,5 @@
 Description:
-    Download tarteaucitron and geodat.
+    Download tarteaucitron and GeoIP.dat.
 
 Example:
     rails generate tarteaucitron
