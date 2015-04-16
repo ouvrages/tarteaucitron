@@ -1,6 +1,6 @@
 # Tarteaucitron
 
-A gem to install tarteaucitron, GeoIP and provide helpers to show social network buttons. 
+A gem to install [tarteaucitron](https://opt-out.ferank.eu/fr/), GeoIP and provide helpers to show social network buttons. 
 
 ## Installation
 
