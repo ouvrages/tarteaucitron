@@ -6,6 +6,7 @@ module Tarteaucitron
       ip = request.remote_ip
       if ["EU", "--"].include?(GeoIP.new(Rails.root.join('db', 'GeoIP.dat')).country(ip).continent_code)
         result += content_tag("script", '', src: "/tarteaucitron/tarteaucitron.js", type: "text/javascript")
+
         default = {
                     "hashtag"=> "#tarteaucitron",
                     "highPrivacy"=> false,
@@ -15,6 +16,11 @@ module Tarteaucitron
                     "cookieslist"=> true,
                     "removeCredit"=> false,
                   }
+
+        if options["options"]
+          default = default.merge(options["options"])
+        end
+
         script = "tarteaucitron.init(#{default.to_json});"
         if options["google_analytics"]
           script += "tarteaucitron.user.gajsUa = '#{options["google_analytics"]}';"
