@@ -20,7 +20,7 @@ module Tarteaucitron
         init_options = default
         
         if options["options"]
-          init_options = default.merge(options["options"])
+          init_options = default.merge(options["options"].with_indifferent_access)
         end
 
         script = "tarteaucitron.init(#{init_options.to_json});"
