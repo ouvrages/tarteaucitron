@@ -17,6 +17,8 @@ module Tarteaucitron
                     "removeCredit"=> false,
                   }
 
+        init_options = default
+        
         if options["options"]
           init_options = default.merge(options["options"])
         end
