@@ -42,6 +42,11 @@ module Tarteaucitron
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('twitter');"
         end
 
+        if options["typekit"]
+          script += "tarteaucitron.user.typekitId = '#{options["typekit"]}';"
+          script += "(tarteaucitron.job = tarteaucitron.job || []).push('typekit');"
+        end
+
         result += content_tag("script", script.html_safe)
 
         result.html_safe
