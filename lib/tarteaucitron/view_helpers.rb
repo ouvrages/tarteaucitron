@@ -10,7 +10,7 @@ module Tarteaucitron
         default = {
                     "hashtag"=> "#tarteaucitron",
                     "highPrivacy"=> false,
-                    "orientation"=> "top",
+                    "orientation"=> options[:orientation] || "top",
                     "adblocker"=> false,
                     "showAlertSmall"=> true,
                     "cookieslist"=> true,
