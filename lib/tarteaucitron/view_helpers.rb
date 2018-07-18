@@ -18,16 +18,27 @@ module Tarteaucitron
                   }
 
         init_options = default
-        
+
         if options["options"]
           init_options = default.merge(options["options"].with_indifferent_access)
         end
 
         script = "tarteaucitron.init(#{init_options.to_json});"
+
+        if options["google_optimize"]
+          script += "tarteaucitron.user.optimizeUa = '#{options["google_optimize"]}';"
+        end
+
         if options["google_analytics"]
           script += "tarteaucitron.user.gajsUa = '#{options["google_analytics"]}';"
           script += "tarteaucitron.user.gajsMore = function () {};"
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('gajs');"
+        end
+
+        if options["google_analytics_universal"]
+          script += "tarteaucitron.user.analyticsUa = '#{options["google_analytics_universal"]}';"
+          script += "tarteaucitron.user.analyticsMore = function () {};"
+          script += "(tarteaucitron.job = tarteaucitron.job || []).push('analytics');"
         end
 
         if options["facebook"]
