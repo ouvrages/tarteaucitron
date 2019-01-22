@@ -1,6 +1,6 @@
 # Tarteaucitron
 
-A gem to install [tarteaucitron](https://opt-out.ferank.eu/fr/), GeoIP and provide helpers to show social network buttons. 
+A gem to install [tarteaucitron](https://opt-out.ferank.eu/fr/), GeoIP and provide helpers to show social network buttons.
 
 ## Installation
 
@@ -33,13 +33,34 @@ rails g tarteaucitron
 Put this in your application layout or elsewhere
 
 ```ruby
-<%= tarteaucitron(:google_analytics => "UA-XXXXXX-XX", :google_plus => true) %>
+<%= tarteaucitron(:google_analytics => "UA-XXXXXX-XX") %>
+```
+
+### Google analytics Universal
+
+```ruby
+<%= tarteaucitron(:google_analytics_universal => "UA-XXXXXX-XX") %>
+```
+
+### Google Tag Manager
+
+```ruby
+<%= tarteaucitron(:googletagmanager => "GTM-XXXXXX-XX") %>
+```
+
+### Google Maps
+
+```ruby
+<%= tarteaucitron(:googlemaps => "YOUR_API_KEY") %>
+```
+
+### Matamo (Piwik)
+
+```ruby
+<%= tarteaucitron(:matomo => { id: "SITE_ID", url:"YOUR_MATOMO_URL"}) %>
 ```
 
 ### Google +
-
-You have to enable Google + on the main helper.
-Example : 
 
 ```ruby
 <%= tarteaucitron(:googleplus => true) %>
@@ -51,7 +72,7 @@ Here's its helper
 <%= googleplus %>
 ```
 
-You can provide a hash of options. Default options are 
+You can provide a hash of options. Default options are
 
 ```ruby
 <%= {size: "small", annotation: "inline", width: "300"} %>
@@ -59,7 +80,7 @@ You can provide a hash of options. Default options are
 
 ### Facebook
 
-Example : 
+Example :
 
 ```ruby
 <%= tarteaucitron(:facebook => true) %>
@@ -71,7 +92,7 @@ Here's its helper
 <%= facebook %>
 ```
 
-You can provide a hash of options. Default options are 
+You can provide a hash of options. Default options are
 
 ```ruby
 <%= {layout: "standard", action: "like", share: "true"} %>
@@ -79,7 +100,7 @@ You can provide a hash of options. Default options are
 
 ### Twitter
 
-Example : 
+Example :
 
 ```ruby
 <%= tarteaucitron(:twitter => {via: "twitter_username", count: "horizontal", dnt: "true"}) %>
@@ -91,7 +112,7 @@ Here's its helper
 <%= twitter %>
 ```
 
-You can provide a hash of options. Default options are 
+You can provide a hash of options. Default options are
 
 ```ruby
 <%= {via: "twitter_username", count: "vertical", dnt: "true"} %>

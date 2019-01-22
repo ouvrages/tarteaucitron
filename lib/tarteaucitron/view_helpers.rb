@@ -43,6 +43,22 @@ module Tarteaucitron
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('analytics');"
         end
 
+        if options["googletagmanager"]
+          script += "tarteaucitron.user.googletagmanagerId = '#{options["googletagmanager"]}';"
+          script += "(tarteaucitron.job = tarteaucitron.job || []).push('googletagmanager');"
+        end
+
+        if options["googlemaps"]
+          script += "tarteaucitron.user.googlemapsKey = '#{options["googlemaps"]}';"
+          script += "(tarteaucitron.job = tarteaucitron.job || []).push('googlemaps');"
+        end
+
+        if options["matomo"]
+          script += "tarteaucitron.user.matomoId = '#{options["matomo"]["id"]}';"
+          script += "tarteaucitron.user.matomoHost = '#{options["matomo"]["url"]}';"
+          script += "(tarteaucitron.job = tarteaucitron.job || []).push('matomo');"
+        end
+
         if options["facebook"]
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('facebook');"
         end
