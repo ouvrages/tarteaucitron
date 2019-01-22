@@ -4,7 +4,9 @@ module Tarteaucitron
       options = options.with_indifferent_access
       result = ""
       ip = request.remote_ip
-      if ["EU", "--"].include?(GeoIP.new(Rails.root.join('db', 'GeoIP.dat')).country(ip).continent_code)
+      geoip = GeoIP2Compat.new(Rails.root.join('db', 'GeoLite2-Country.mmdb').to_s)
+      country = geoip.lookup(ip)
+      if !country || ISO3166::Country.new(country.country_code).region == "Europe"
         result += content_tag("script", '', src: "/tarteaucitron/tarteaucitron.js", type: "text/javascript")
 
         default = {
@@ -105,4 +107,3 @@ module Tarteaucitron
 
   end
 end
-

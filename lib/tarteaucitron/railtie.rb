@@ -1,5 +1,6 @@
 require 'tarteaucitron/view_helpers'
-require 'geoip'
+require 'geoip2_compat'
+
 module Tarteaucitron
   class Railtie < Rails::Railtie
     initializer "tarteaucitron.view_helpers" do

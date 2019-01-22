@@ -22,21 +22,18 @@ class TarteaucitronGenerator < Rails::Generators::Base
     url = "https://raw.githubusercontent.com/AmauriC/tarteaucitron.js/master/"
 
     files.each do |file|
-
       get url + file, "public/tarteaucitron/#{file}"
-
     end
 
   end
 
   def download_geocat
 
-    url = "http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz"
+    url = "https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz"
 
-    get url, "db/GeoIP.dat.gz"
+    get url, "db/GeoLite2-Country.tar.gz"
 
-    run "gunzip db/GeoIP.dat.gz"
-
+    run "tar -xzf db/GeoLite2-Country.tar.gz --wildcards '*/GeoLite2-Country.mmdb' -O > db/GeoLite2-Country.mmdb && rm db/GeoLite2-Country.tar.gz"
   end
 
 end
