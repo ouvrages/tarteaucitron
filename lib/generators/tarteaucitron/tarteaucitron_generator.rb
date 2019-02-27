@@ -1,8 +1,8 @@
 class TarteaucitronGenerator < Rails::Generators::Base
-  source_root File.expand_path('../templates', __FILE__)
+  source_root File.expand_path('templates', __dir__)
 
   def download_tarteaucitron
-    files = %w(
+    files = %w[
       lang/tarteaucitron.ru.js
       lang/tarteaucitron.es.js
       lang/tarteaucitron.pt.js
@@ -17,23 +17,20 @@ class TarteaucitronGenerator < Rails::Generators::Base
       tarteaucitron.services.js
       LICENSE
       advertising.js
-    )
+    ]
 
-    url = "https://raw.githubusercontent.com/AmauriC/tarteaucitron.js/master/"
+    url = 'https://raw.githubusercontent.com/AmauriC/tarteaucitron.js/master/'
 
     files.each do |file|
       get url + file, "public/tarteaucitron/#{file}"
     end
-
   end
 
   def download_geocat
+    url = 'https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz'
 
-    url = "https://geolite.maxmind.com/download/geoip/database/GeoLite2-Country.tar.gz"
-
-    get url, "db/GeoLite2-Country.tar.gz"
+    get url, 'db/GeoLite2-Country.tar.gz'
 
     run "tar -xzf db/GeoLite2-Country.tar.gz --wildcards '*/GeoLite2-Country.mmdb' -O > db/GeoLite2-Country.mmdb && rm db/GeoLite2-Country.tar.gz"
   end
-
 end
