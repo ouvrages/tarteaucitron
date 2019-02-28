@@ -5,8 +5,8 @@ module Tarteaucitron
       result = ""
       ip = request.remote_ip
       geoip_infos = GeoIP2Compat.new(Rails.root.join('db', 'GeoLite2-Country.mmdb').to_s).lookup(ip)
-      country = ISO3166::Country.new(geoip_info[:country_code]) if geoip_info
-      if !country || country.region == "Europe"
+      country = ISO3166::Country.new(geoip_infos[:country_code]) if geoip_infos
+      if (!country || country.region == "Europe")
         result += content_tag("script", '', src: "/tarteaucitron/tarteaucitron.js", type: "text/javascript")
 
         default = {
