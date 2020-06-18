@@ -44,6 +44,7 @@ module Tarteaucitron
         if options["gtag"]
           script += "tarteaucitron.user.gtagUa = '#{options["gtag"]}';"
           script += "tarteaucitron.user.gtagMore = function () {#{options["google_analytics_jsmore"]}};"
+          script += "tarteaucitron.user.gtagConfig = #{options[:gtag_config].presence || {}};"
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('gtag');"
         end
 
