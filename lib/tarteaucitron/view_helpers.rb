@@ -43,6 +43,12 @@ module Tarteaucitron
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('analytics');"
         end
 
+        if options["gtag"]
+          script += "tarteaucitron.user.gtagUa = '#{options["gtag"]}';"
+          script += "tarteaucitron.user.gtagMore = function () {#{options["google_analytics_jsmore"]}};"
+          script += "(tarteaucitron.job = tarteaucitron.job || []).push('gtag');"
+        end
+
         if options["googletagmanager"]
           script += "tarteaucitron.user.googletagmanagerId = '#{options["googletagmanager"]}';"
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('googletagmanager');"
