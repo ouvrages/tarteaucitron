@@ -31,13 +31,13 @@ module Tarteaucitron
 
         if options["google_analytics"]
           script += "tarteaucitron.user.gajsUa = '#{options["google_analytics"]}';"
-          script += "tarteaucitron.user.gajsMore = function () {};"
+          script += "tarteaucitron.user.gajsMore = function () {#{options["google_analytics_jsmore"]}};"
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('gajs');"
         end
 
         if options["google_analytics_universal"]
           script += "tarteaucitron.user.analyticsUa = '#{options["google_analytics_universal"]}';"
-          script += "tarteaucitron.user.analyticsMore = function () {};"
+          script += "tarteaucitron.user.analyticsMore = function () {#{options["google_analytics_jsmore"]}};"
           script += "(tarteaucitron.job = tarteaucitron.job || []).push('analytics');"
         end
 
